@@ -11,7 +11,6 @@ const nameMessages = {
   jhazmine: specialMessage,
   "jhazmine claire": specialMessage,
   "jhazmine claire pantalla": specialMessage,
-  jay: "putangina mo website mo to eh",
 };
 
 button.addEventListener("click", () => {
