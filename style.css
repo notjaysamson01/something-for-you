@@ -1,0 +1,131 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #ffffff;
+    font-family: cursive;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+    text-align: center;
+    background: rgb(255, 255, 255);
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+    color: #000000;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.intro {
+    margin-top: 20px;
+    line-height: 1.5;
+    font-size: 20px;
+    text-align: center;
+    font-family: cursive;
+}
+
+.survey-button {
+text-align: center;
+  display: inline-block;
+  background-color: #000000;
+  color: #fff;
+  cursor: pointer;
+  font-family: cursive;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  text-decoration: underline;
+}
+
+input[type="text"] {
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.submit-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #000000;
+    border-radius: 8px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: cursive;
+    font-size: 18px;
+}
+
+.typewriter {
+  display: none;
+  border-right: 2px solid black;
+  white-space: normal;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.typewriter.active {
+  display: inline-block;
+  animation: typing 2s steps(30, end) forwards,
+             blink 0.7s step-end infinite;
+}
+
+.center-wrapper {
+    width: 100%;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.message {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    margin: 0;
+    padding-left: 120px;
+    padding-right: 120px;
+    padding-bottom: 0;
+    padding-top: 0;
+    font-size: 30px;
+}
