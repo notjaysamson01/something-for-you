@@ -11,6 +11,7 @@ const nameMessages = {
   jhazmine: specialMessage,
   "jhazmine claire": specialMessage,
   "jhazmine claire pantalla": specialMessage,
+  "jhazmine pantalla": specialMessage,
 };
 
 button.addEventListener("click", () => {
@@ -34,9 +35,10 @@ if (submitBtn) {
       .value.trim()
       .toLowerCase();
 
-    alert(nameMessages[nameInput] || "Wag ka papansin teh para kay ano to eh");
+    alert(nameMessages[nameInput] || "bawal to sayo blee hihihi :P");
 
     if (nameMessages[nameInput]) {
+    alert("Are you ready?");
     secretParagraph.style.display = "block";
     secretParagraph.classList.add("active");
 
@@ -44,7 +46,7 @@ if (submitBtn) {
     music.volume = 0.5;
     music.play();
     }
-
+    
 
     setTimeout(() => {
       modal.classList.remove("show");
