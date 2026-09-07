@@ -1,131 +1,904 @@
+/* =========================================
+   RESET
+========================================= */
+
 * {
     box-sizing: border-box;
 }
 
-body{
+html,
+body {
     margin: 0;
     padding: 0;
-    background-color: #000000;
-    color: #ffffff;
-    font-family: cursive;
+    width: 100%;
+    min-height: 100%;
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
+body {
+    min-height: 100vh;
 
-.modal.show {
-  display: flex;
-}
+    background: #000;
+    color: #fff;
 
-.modal-content {
-    text-align: center;
-    background: rgb(255, 255, 255);
-    padding: 30px;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 8px;
+    font-family: Georgia, "Times New Roman", serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
     position: relative;
-    max-height: 80vh;
-    overflow-y: auto;
-    color: #000000;
 }
 
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.background-circle {
+    position: fixed;
+
+    border: 2px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    z-index: 0;
 }
+
+.circle-1 {
+    width: 600px;
+    height: 600px;
+
+    top: -300px;
+    left: -250px;
+
+    animation: rotate 30s linear infinite;
+}
+
+.circle-2 {
+    width: 450px;
+    height: 450px;
+
+    bottom: -250px;
+    right: -180px;
+
+    animation: rotateReverse 25s linear infinite;
+}
+
+
+/* =========================================
+   TOP LABEL
+========================================= */
+
+.top-label {
+    position: absolute;
+
+    top: 35px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+    letter-spacing: 4px;
+
+    white-space: nowrap;
+
+    opacity: 0.55;
+
+    z-index: 2;
+}
+
+.top-label span {
+    font-size: 12px;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main {
+    position: relative;
+
+    width: min(850px, 90%);
+
+    text-align: center;
+
+    z-index: 2;
+
+    animation: fadeIn 1.2s ease forwards;
+}
+
+
+/* =========================================
+   INTRO DECORATION
+========================================= */
+
+.intro-decoration {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+}
+
+.intro-decoration span:first-child,
+.intro-decoration span:last-child {
+    width: 45px;
+    height: 1px;
+
+    background: #fff;
+
+    opacity: 0.4;
+}
+
+.intro-decoration span:nth-child(2) {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    opacity: 0.5;
+}
+
+
+/* =========================================
+   INTRO TEXT
+========================================= */
 
 .intro {
-    margin-top: 20px;
-    line-height: 1.5;
-    font-size: 20px;
-    text-align: center;
-    font-family: cursive;
+    margin: 0;
+
+    padding: 10px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(28px, 5vw, 52px);
+
+    font-weight: normal;
+
+    line-height: 1.25;
+
+    letter-spacing: -1px;
 }
+
+.intro span {
+    opacity: 0.75;
+}
+
+
+/* =========================================
+   SURVEY BUTTON
+========================================= */
 
 .survey-button {
-text-align: center;
-  display: inline-block;
-  background-color: #000000;
-  color: #fff;
-  cursor: pointer;
-  font-family: cursive;
-  font-size: 20px;
-  font-weight: bold;
-  border: none;
-  text-decoration: underline;
-}
+    position: relative;
 
-input[type="text"] {
-    text-align: center;
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    box-sizing: border-box;
-    font-size: 16px;
-}
+    margin-top: 25px;
 
-.submit-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #000000;
-    border-radius: 8px;
+    padding: 5px 8px;
+
+    background: transparent;
+
     color: #fff;
+
     border: none;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(28px, 5vw, 52px);
+
+    font-weight: bold;
+
     cursor: pointer;
-    font-family: cursive;
-    font-size: 18px;
+
+    transition:
+        letter-spacing 0.35s ease,
+        transform 0.35s ease;
 }
 
-.typewriter {
-  display: none;
-  border-right: 2px solid black;
-  white-space: normal;
-  max-width: 100%;
-  overflow: hidden;
+/* Underline */
+.survey-button::after {
+    content: "";
+
+    position: absolute;
+
+    left: 5%;
+    bottom: 0;
+
+    width: 90%;
+    height: 2px;
+
+    background: #fff;
+
+    transform-origin: center;
+
+    transition:
+        transform 0.35s ease,
+        width 0.35s ease;
 }
 
-@keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+.survey-button:hover {
+    letter-spacing: 5px;
+
+    transform: translateY(-3px);
 }
 
-@keyframes blink {
-  50% { border-color: transparent }
+.survey-button:hover::after {
+    width: 40%;
+
+    transform: translateX(75%);
 }
 
-.typewriter.active {
-  display: inline-block;
-  animation: typing 2s steps(30, end) forwards,
-             blink 0.7s step-end infinite;
+
+/* =========================================
+   BOTTOM DECORATION
+========================================= */
+
+.bottom-decoration {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+
+    margin-top: 35px;
 }
+
+.bottom-decoration span:first-child,
+.bottom-decoration span:last-child {
+    width: 70px;
+    height: 1px;
+
+    background: #fff;
+
+    opacity: 0.25;
+}
+
+.bottom-decoration span:nth-child(2) {
+    font-size: 12px;
+
+    opacity: 0.5;
+
+    animation: pulse 2s ease-in-out infinite;
+}
+
+
+/* =========================================
+   SECRET MESSAGE
+========================================= */
 
 .center-wrapper {
-    width: 100%;
+    position: relative;
+
+    width: min(850px, 90%);
+
+    margin: 25px auto 0;
+
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin: 0;
-    padding: 0;
+
+    z-index: 5;
+
+    pointer-events: none;
 }
 
 .message {
+    display: none;
+
     width: 100%;
-    text-align: center;
-    align-items: center;
+
     margin: 0;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 0;
-    padding-top: 0;
-    font-size: 20px;
+
+    padding: 25px 35px;
+
+    text-align: center;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: clamp(20px, 3vw, 30px);
+
+    line-height: 1.6;
+
+    letter-spacing: 0.5px;
+
+    position: relative;
+}
+
+.message.active {
+    display: inline-block;
+
+    animation: messageAppear 1s ease forwards;
+}
+
+
+/* Decorative quotation marks */
+
+.message::before {
+    content: "“";
+
+    position: absolute;
+
+    left: -10px;
+    top: -25px;
+
+    font-size: 70px;
+
+    opacity: 0.2;
+}
+
+.message::after {
+    content: "”";
+
+    position: absolute;
+
+    right: -10px;
+    bottom: -50px;
+
+    font-size: 70px;
+
+    opacity: 0.2;
+}
+
+
+/* =========================================
+   MAIN CONTENT WHEN MESSAGE APPEARS
+========================================= */
+
+main {
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .center-wrapper {
+        width: 90%;
+
+        margin-top: 20px;
+    }
+
+    .message {
+        padding: 20px;
+
+        font-size: 20px;
+    }
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.88);
+
+    backdrop-filter: blur(10px);
+
+    z-index: 2000;
+}
+
+.modal.show {
+    display: flex;
+
+    animation: modalFade 0.35s ease forwards;
+}
+
+
+/* =========================================
+   MODAL CONTENT
+========================================= */
+
+.modal-content {
+    position: relative;
+
+    width: min(470px, 92vw);
+
+    padding: 45px 40px 30px;
+
+    background: #fff;
+
+    color: #000;
+
+    text-align: center;
+
+    border: 1px solid #fff;
+
+    box-shadow:
+        0 0 0 1px #000,
+        0 20px 60px rgba(0, 0, 0, 0.8);
+
+    animation: modalSlide 0.45s ease forwards;
+}
+
+
+/* Corner decorations */
+
+.modal-content::before,
+.modal-content::after {
+    content: "";
+
+    position: absolute;
+
+    width: 25px;
+    height: 25px;
+
+    border: 1px solid #000;
+}
+
+.modal-content::before {
+    top: 12px;
+    left: 12px;
+
+    border-right: none;
+    border-bottom: none;
+}
+
+.modal-content::after {
+    right: 12px;
+    bottom: 12px;
+
+    border-left: none;
+    border-top: none;
+}
+
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.close-btn {
+    position: absolute;
+
+    top: 15px;
+    right: 18px;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 25px;
+    font-weight: 200;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+
+    background: #000;
+    color: #fff;
+}
+
+
+/* =========================================
+   MODAL TOP
+========================================= */
+
+.modal-top {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.5;
+}
+
+.modal-top span:first-child,
+.modal-top span:last-child {
+    font-size: 7px;
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.question-label {
+    margin: 0 0 18px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+    letter-spacing: 4px;
+}
+
+.step label {
+    display: block;
+
+    margin: 0;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 28px;
+
+    font-weight: normal;
+}
+
+.question-description {
+    margin: 12px 0 25px;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 14px;
+
+    font-style: italic;
+
+    opacity: 0.6;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.input-container {
+    width: 100%;
+
+    border-bottom: 1px solid #000;
+}
+
+input[type="text"] {
+    width: 100%;
+
+    padding: 12px 5px;
+
+    background: transparent;
+
+    color: #000;
+
+    border: none;
+
+    outline: none;
+
+    text-align: center;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 17px;
+}
+
+input[type="text"]::placeholder {
+    color: #888;
+
+    font-style: italic;
+}
+
+input[type="text"]:focus {
+    border: none;
+    outline: none;
+}
+
+
+/* =========================================
+   SUBMIT
+========================================= */
+
+.submit-button {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    margin: 30px auto 25px;
+
+    padding: 12px 25px;
+
+    background: #000;
+
+    color: #fff;
+
+    border: 1px solid #000;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        letter-spacing 0.3s ease;
+}
+
+.submit-button span {
+    font-size: 16px;
+
+    transition: transform 0.3s ease;
+}
+
+.submit-button:hover {
+    background: #fff;
+
+    color: #000;
+
+    letter-spacing: 4px;
+}
+
+.submit-button:hover span {
+    transform: translateX(5px);
+}
+
+
+/* =========================================
+   MODAL FOOTER
+========================================= */
+
+.modal-bottom {
+    padding-top: 18px;
+
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+
+    font-family: Arial, sans-serif;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.45;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    position: fixed;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 85%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    opacity: 0.35;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes modalFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalSlide {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+        letter-spacing: 5px;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0.5px;
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateReverse {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .top-label {
+        top: 25px;
+
+        font-size: 8px;
+
+        letter-spacing: 3px;
+    }
+
+    .intro {
+        font-size: 29px;
+
+        line-height: 1.3;
+    }
+
+    .survey-button {
+        font-size: 29px;
+    }
+
+    .intro-decoration {
+        margin-bottom: 18px;
+    }
+
+    .bottom-decoration {
+        margin-top: 25px;
+    }
+
+    .modal-content {
+        padding: 40px 25px 25px;
+    }
+
+    .step label {
+        font-size: 24px;
+    }
+
+    footer {
+        bottom: 18px;
+
+        width: 85%;
+
+        font-size: 7px;
+
+        letter-spacing: 2px;
+    }
+
+    .circle-1 {
+        width: 400px;
+        height: 400px;
+
+        top: -220px;
+        left: -220px;
+    }
+
+    .circle-2 {
+        width: 300px;
+        height: 300px;
+
+        bottom: -180px;
+        right: -180px;
+    }
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

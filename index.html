@@ -1,36 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>something for you</title>
+
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
-    <h1 class="intro">
-        Hi:), Before We Start I Want You to Answer a very important question right
-        <button class="survey-button">here</button>
-        <audio id="bg-music" loop>
-  <source src="Ben & Ben - Paninindigan Kita (Lyrics).mp3" type="audio/mpeg">
-</audio>
-    </h1>
 
-    <div id="survey-modal" class="modal">
-        <div class="modal-content">
-             <span class="close-btn">&times;</span>
+    <!-- Decorative background -->
+    <div class="background-circle circle-1"></div>
+    <div class="background-circle circle-2"></div>
 
-    <div class="step active">
-      <label>What is your name?</label>
-      <input type="text" id="name" placeholder="Put name here, kahit first name lang basta name mo">
-      <button class="submit-button">submit</button>
+    <!-- Small top label -->
+    <div class="top-label">
+        <span>✦</span>
+        SOMETHING FOR YOU
+        <span>✦</span>
     </div>
+
+
+    <!-- Main introduction -->
+    <main>
+
+        <div class="intro-decoration">
+            <span></span>
+            <span>01</span>
+            <span></span>
+        </div>
+
+        <h1 class="intro">
+            Hi :)
+            <br>
+            <span>Before we start,</span>
+            <br>
+            I want you to answer a
+            <br>
+            very important question
+            <br>
+
+            <button class="survey-button">
+                here
+            </button>
+        </h1>
+
+        <div class="bottom-decoration">
+            <span></span>
+            <span>✦</span>
+            <span></span>
+        </div>
+
+    </main>
+
+
+    <!-- Secret message -->
+    <div class="center-wrapper">
+
+        <p
+            class="message"
+            id="secret-paragraph"
+            data-text="test message RAHHHHHHH marunong ako mag code">
+        </p>
+
+    </div>
+
+
+    <!-- Survey modal -->
+    <div id="survey-modal" class="modal">
+
+        <div class="modal-content">
+
+            <!-- Close button -->
+            <span class="close-btn">&times;</span>
+
+
+            <!-- Modal decoration -->
+            <div class="modal-top">
+                <span>✦</span>
+                <span>01 / 01</span>
+                <span>✦</span>
+            </div>
+
+
+            <!-- Question -->
+            <div class="step active">
+
+                <p class="question-label">
+                    A VERY IMPORTANT QUESTION
+                </p>
+
+                <label for="name">
+                    What is your name?
+                </label>
+
+                <p class="question-description">
+                    Just making sure it's you.
+                </p>
+
+
+                <!-- Name input -->
+                <div class="input-container">
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Put name here..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <!-- Submit -->
+                <button class="submit-button">
+                    submit
+                    <span>→</span>
+                </button>
+
+            </div>
+
+
+            <!-- Modal bottom -->
+            <div class="modal-bottom">
+                <span>PLEASE ANSWER HONESTLY</span>
+            </div>
 
         </div>
+
     </div>
-    <div class="center-wrapper">
-    <p class="message" id="secret-paragraph" data-text="test message RAHHHHHHH marunong ako mag code"> 
-    </p>
-</div>
+
+
+    <!-- Background music -->
+    <audio id="bg-music" loop>
+        <source
+            src="Ben & Ben - Paninindigan Kita (Lyrics).mp3"
+            type="audio/mpeg">
+    </audio>
+
+
+    <!-- Footer -->
+    <footer>
+        <span>made with ♡</span>
+        <span>just for you</span>
+    </footer>
+
 </body>
+
 </html>
