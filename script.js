@@ -7,7 +7,12 @@ const music = document.getElementById("bg-music");
 const specialMessage = "Just making sure it was you :)";
 
 const nameMessages = {
-  david: specialMessage,
+  jha: specialMessage,
+  jhaz: specialMessage,
+  jhazmine: specialMessage,
+  "jhazmine claire": specialMessage,
+  "jhazmine claire pantalla": specialMessage,
+  riyann: specialMessage,
 };
 
 button.addEventListener("click", () => {
