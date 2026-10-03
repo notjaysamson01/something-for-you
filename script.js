@@ -19,11 +19,6 @@ const music = document.getElementById("bg-music");
 const specialMessage = "Just making sure it was you :)";
 
 const nameMessages = {
-    jha: specialMessage,
-    jhaz: specialMessage,
-    jhazmine: specialMessage,
-    "jhazmine claire": specialMessage,
-    "jhazmine claire pantalla": specialMessage,
     riyann: specialMessage
 };
 
@@ -45,9 +40,6 @@ closeBtn.addEventListener("click", () => {
     modal.classList.remove("show");
 });
 
-
-/* Close when clicking outside the modal */
-
 modal.addEventListener("click", (event) => {
     if (event.target === modal) {
         modal.classList.remove("show");
@@ -61,21 +53,67 @@ modal.addEventListener("click", (event) => {
 
 function typeWriter(element, text, speed = 60) {
 
-    element.textContent = "";
+    element.innerHTML = "";
 
-    let i = 0;
+    // Split the confession wherever there is a blank line
+    const paragraphs = text.split(/\n\s*\n/);
 
-    const interval = setInterval(() => {
+    let paragraphIndex = 0;
+    let characterIndex = 0;
 
-        element.textContent += text.charAt(i);
+    function typeCharacter() {
 
-        i++;
-
-        if (i >= text.length) {
-            clearInterval(interval);
+        // Finished typing everything
+        if (paragraphIndex >= paragraphs.length) {
+            return;
         }
 
-    }, speed);
+        // Create the current paragraph if it doesn't exist
+        let paragraph = element.lastElementChild;
+
+        if (
+            !paragraph ||
+            paragraph.dataset.paragraph !== String(paragraphIndex)
+        ) {
+            paragraph = document.createElement("p");
+            paragraph.dataset.paragraph = paragraphIndex;
+            element.appendChild(paragraph);
+        }
+
+        const currentText = paragraphs[paragraphIndex];
+
+        if (characterIndex < currentText.length) {
+
+            paragraph.textContent += currentText.charAt(characterIndex);
+
+            characterIndex++;
+
+            // Automatically scroll to keep the newly typed text visible
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: "smooth"
+            });
+
+            setTimeout(typeCharacter, speed);
+
+        } else {
+
+            // Finished this paragraph
+            paragraphIndex++;
+            characterIndex = 0;
+
+            // Scroll again when starting the next paragraph
+            window.scrollTo({
+                top: document.documentElement.scrollHeight,
+                behavior: "smooth"
+            });
+
+            // Small pause before starting the next paragraph
+            setTimeout(typeCharacter, speed);
+        }
+    }
+
+    typeCharacter();
 }
 
 
@@ -87,50 +125,30 @@ submitBtn.addEventListener("click", () => {
 
     const name = nameInput.value.trim().toLowerCase();
 
-    /* Check the entered name */
-
     alert(
         nameMessages[name] ||
         "bawal to sayo blee hihihi :P"
     );
 
-
-    /* If the name is correct */
-
     if (nameMessages[name]) {
 
-        /* Second alert */
         alert("Are you ready?");
 
-
-        /* Show secret message */
         secretParagraph.style.display = "inline-block";
 
         secretParagraph.classList.add("active");
 
-
-        /* Start typewriter */
         typeWriter(
             secretParagraph,
             secretParagraph.dataset.text,
             60
         );
 
-
-        /* Start music */
-
         music.currentTime = 0;
         music.volume = 0.5;
 
         music.play().catch(() => {
-            /*
-                Some browsers may block autoplay/audio
-                until the user interacts with the page.
-            */
         });
-
-
-        /* Close modal */
 
         setTimeout(() => {
             modal.classList.remove("show");
