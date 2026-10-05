@@ -12,27 +12,16 @@ body {
 
 body {
     min-height: 100vh;
-
     background: #000;
     color: #fff;
-
     font-family: Georgia, "Times New Roman", serif;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     overflow-x: hidden;
     overflow-y: auto;
-
     position: relative;
 }
 
 
-/* =========================================
-   BACKGROUND
-========================================= */
+/* BACKGROUND*/
 
 .background-circle {
     position: fixed;
@@ -44,6 +33,10 @@ body {
     pointer-events: none;
 
     z-index: 0;
+
+    filter: blur(1px);
+    box-shadow: 0 0 80px rgba(255, 255, 255, 0.025);
+
 }
 
 .circle-1 {
@@ -67,29 +60,27 @@ body {
 }
 
 
-/* =========================================
-   TOP LABEL
-========================================= */
+/* TOP LABEL */
 
 .top-label {
-    position: fixed;
-    top: 35px;
+    position: absolute;
+    top: 25px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 2;
+
+    z-index: 9999;
 
     display: flex;
     align-items: center;
     gap: 15px;
 
     font-family: Arial, sans-serif;
-
     font-size: 12px;
     letter-spacing: 4px;
-
     white-space: nowrap;
 
     opacity: 0.55;
+    pointer-events: none;
 }
 
 .top-label span {
@@ -97,14 +88,20 @@ body {
 }
 
 
-/* =========================================
-   MAIN
-========================================= */
+/* MAIN */
 
 main {
     position: relative;
 
     width: min(850px, 90%);
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     text-align: center;
 
@@ -114,9 +111,7 @@ main {
 }
 
 
-/* =========================================
-   INTRO DECORATION
-========================================= */
+/* INTRO DECORATION*/
 
 .intro-decoration {
     display: flex;
@@ -141,17 +136,13 @@ main {
 
 .intro-decoration span:nth-child(2) {
     font-family: Arial, sans-serif;
-
-    font-size: 10px;
-    letter-spacing: 2px;
-
-    opacity: 0.5;
+    font-size: 9px;
+    letter-spacing: 3px;
+    opacity: 0.4;
 }
 
 
-/* =========================================
-   INTRO TEXT
-========================================= */
+/* INTRO TEXT*/
 
 .intro {
     margin: 0;
@@ -174,9 +165,7 @@ main {
 }
 
 
-/* =========================================
-   SURVEY BUTTON
-========================================= */
+/* SURVEY BUTTON */
 
 .survey-button {
     position: relative;
@@ -226,8 +215,12 @@ main {
 
 .survey-button:hover {
     letter-spacing: 5px;
-
     transform: translateY(-3px);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.35);
+}
+
+.survey-button:active {
+    transform: translateY(0);
 }
 
 .survey-button:hover::after {
@@ -237,9 +230,7 @@ main {
 }
 
 
-/* =========================================
-   BOTTOM DECORATION
-========================================= */
+/*  BOTTOM DECORATION */
 
 .bottom-decoration {
     display: flex;
@@ -271,9 +262,7 @@ main {
 }
 
 
-/* =========================================
-   SECRET MESSAGE
-========================================= */
+/*  SECRET MESSAGE */
 
 .center-wrapper {
     position: relative;
@@ -297,7 +286,7 @@ main {
 
     margin: 0 auto;
 
-    padding: 25px 35px;
+    padding: 40px 45px;
 
     text-align: center;
 
@@ -353,10 +342,7 @@ main {
 }
 
 
-/* =========================================
-   MAIN CONTENT WHEN MESSAGE APPEARS
-========================================= */
-
+/*MAIN CONTENT WHEN MESSAGE APPEARS */
 main {
     transition:
         opacity 0.8s ease,
@@ -364,9 +350,7 @@ main {
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE*/
 
 @media (max-width: 600px) {
 
@@ -377,16 +361,14 @@ main {
     }
 
     .message {
-        padding: 20px;
+        padding: 30px 20px;
 
         font-size: 20px;
     }
 }
 
 
-/* =========================================
-   MODAL
-========================================= */
+/* MODAL*/
 
 .modal {
     display: none;
@@ -414,9 +396,7 @@ main {
 }
 
 
-/* =========================================
-   MODAL CONTENT
-========================================= */
+/* MODAL CONTENT */
 
 .modal-content {
     position: relative;
@@ -469,9 +449,7 @@ main {
 }
 
 
-/* =========================================
-   CLOSE BUTTON
-========================================= */
+/* CLOSE BUTTON */
 
 .close-btn {
     position: absolute;
@@ -507,9 +485,7 @@ main {
 }
 
 
-/* =========================================
-   MODAL TOP
-========================================= */
+/* MODAL TOP */
 
 .modal-top {
     display: flex;
@@ -536,9 +512,7 @@ main {
 }
 
 
-/* =========================================
-   QUESTION
-========================================= */
+/* QUESTION */
 
 .question-label {
     margin: 0 0 18px;
@@ -577,9 +551,7 @@ main {
 }
 
 
-/* =========================================
-   INPUT
-========================================= */
+/* INPUT*/
 
 .input-container {
     width: 100%;
@@ -618,10 +590,7 @@ input[type="text"]:focus {
     outline: none;
 }
 
-
-/* =========================================
-   SUBMIT
-========================================= */
+/* SUBMIT */
 
 .submit-button {
     display: flex;
@@ -678,9 +647,7 @@ input[type="text"]:focus {
 }
 
 
-/* =========================================
-   MODAL FOOTER
-========================================= */
+/*MODAL FOOTER */
 
 .modal-bottom {
     padding-top: 18px;
@@ -697,18 +664,11 @@ input[type="text"]:focus {
 }
 
 
-/* =========================================
-   FOOTER
-========================================= */
+/* FOOTER*/
 
 footer {
-    position: fixed;
-
-    bottom: 25px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
+    position: relative;
+    margin: 80px auto 30px;
 
     width: 85%;
 
@@ -728,9 +688,7 @@ footer {
 }
 
 
-/* =========================================
-   ANIMATIONS
-========================================= */
+/*ANIMATIONS*/
 
 @keyframes fadeIn {
     from {
@@ -814,9 +772,7 @@ footer {
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE*/
 
 @media (max-width: 600px) {
 
@@ -882,9 +838,7 @@ footer {
 }
 
 
-/* =========================================
-   REDUCED MOTION
-========================================= */
+/* REDUCED MOTION*/
 
 @media (prefers-reduced-motion: reduce) {
 
