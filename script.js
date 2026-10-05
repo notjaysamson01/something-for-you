@@ -19,7 +19,8 @@ const music = document.getElementById("bg-music");
 const specialMessage = "Just making sure it was you :)";
 
 const nameMessages = {
-    riyann: specialMessage
+    riyann: specialMessage,
+    jerold: specialMessage
 };
 
 
