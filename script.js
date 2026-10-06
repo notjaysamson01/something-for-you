@@ -132,6 +132,8 @@ submitBtn.addEventListener("click", () => {
     );
 
     if (nameMessages[name]) {
+        
+        alert("sobrang haba ng nagawa ko hihihi");
 
         alert("Are you ready?");
 
@@ -146,7 +148,7 @@ submitBtn.addEventListener("click", () => {
         );
 
         music.currentTime = 0;
-        music.volume = 0.5;
+        music.volume = 1;
 
         music.play().catch(() => {
         });
